@@ -24,13 +24,15 @@ html{
 }
 
 /*  Hamburger Menu */
-.menu-btn {
+.menu-close-button {
+    color: white;
     display: none;
     flex-direction: column;
     cursor: pointer;
 }
 
-.menu-btn span {
+.menu-close-button span {
+    color: #fff;
     background: #00f7ff;
     height: 3px;
     width: 25px;

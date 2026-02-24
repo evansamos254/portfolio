@@ -31,7 +31,7 @@ const projects = [
         title: "My Portfolio",
         description: "personal responsive portfolio built with HTML, CSS and JavaScript",
         image: "Images/project-1.png",
-        live: "#",
+        live: "https://evansamo.netlify.app",
     },
     {
         title: "Coffee Shop Website",
@@ -54,7 +54,7 @@ projects.forEach(project => {
     <h3>${project.title}</h3>
     <p>${project.description}</p>
     <div class="project-links">
-      <a href="${project.live}" target="_blank">Live Demo</a>
+      <a href="${project.live}" target="_blank">https://evansamo.netlify.app</a>
     </div>
   `;
 
