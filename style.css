@@ -125,7 +125,7 @@ header {
 }
 
 .navbar a:hover {
-    color: var(--main-color);
+    color: darkgreen;
 }
 
 #menu-icon {
