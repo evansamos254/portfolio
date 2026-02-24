@@ -1,0 +1,11 @@
+# netlify.toml
+
+[build]
+  # No build command for plain HTML/CSS/JS
+  publish = "."  # or "public" if your index.html is inside a folder called public
+
+# Optional: Redirects
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200

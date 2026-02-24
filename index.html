@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio| Home</title>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            .home {display: flex; justify-content: center; align-items: center; gap: 4rem; }
+            .home-content {text-align: left; line-height: 1.2; font-size: 3.5rem;}
+            .home-content h1 {color: var(--main-color);}
+            .home-content h3 {color: var(--text-color);}
+            .home-content p {color: #fff;}
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="index.html" class="logo">My Portfolio | Evans Amos</a>
+
+
+            <nav class="navbar">
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="projects.html">Projects</a>
+
+
+                <!-- Close button -->
+                <div class="close-btn" id="closeBtn">&times;</div>
+            </nav>
+
+            <!-- Hamburger Menu-->
+            <div class="menu=btn" id="menuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <section class="home reveal">
+            <div class="home-content">
+                <h3>Hello, It's Me</h3>
+                <h1>Evans Amos</h1>
+                <h3>And I'm a<span class="typing-text"></span></h3>
+                <p>Computer Science Student specializing in Web Development and building high-performance digital experiences.</p>
+                <div class="social-icons">
+                    <a href="https://github.com/evansamos254"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.linkedin.com/in/evans-amos-067872370"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://wa.me/254708471884?text=Hi%20Evans%20%I%20need%20%help."><i class='bx bxl-whatsapp'></i></a>
+                </div>
+                <div class="btn-group" style="margin-top: 2rem;">
+                    <a href="about.html" class="btn">About Me</a>
+                    <a href="#" class="btn" style="background: transparent; border: 2px solid var(--main-color); color: var(--main-color); margin: 10px;">Download CV</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Evans Amos. All rights reserved.</p>
+           <div class="social-icons">
+            <a href="https://www.linkedin.com/in/evans-amos-067872370"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/evansamos254"><i class='bx bxl-github'></i></a>
+            <a href="https://wa.me/254708471884?text=Hi%20Evans%20%I%20need%20%help."><i class='bx bxl-whatsapp'></i></a>
+        </div>
+        </footer>
+
+        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.udm.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
