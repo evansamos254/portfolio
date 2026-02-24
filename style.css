@@ -99,7 +99,7 @@ header {
     position: fixed;
     top: 0; left: 0; width: 100%;
     padding: 2rem 9%;
-    background: rgba(202, 204, 214, 0.8);
+    background: rgba(10, 186, 218, 0.8);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;

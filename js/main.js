@@ -32,12 +32,6 @@ const projects = [
         description: "personal responsive portfolio built with HTML, CSS and JavaScript",
         image: "Images/project-1.png",
         live: "https://evansamo.netlify.app",
-    },
-    {
-        title: "Coffee Shop Website",
-        description: "Mordern coffee shop website with gallery $ testimonials.",
-        image: "Images/project-2.png",
-        live: "#",
     }
 ];
 
