@@ -3,71 +3,83 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Skills | Portfolio</title>
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <meta name="description" content="Explore the technical skills and experties of Evans Amos in Cybersecurity and Web Development">
+        <title>Skills | Evans Amos</title>
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <header>
             <div class="logo">Evans Amos</div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                </ul>
-            </nav>
             <div class="menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="skills.html" class="nav-link active">Skills</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                </ul>
+            </nav>
         </header>
-<section class="skills">
-    <h2 class="heading" style="text-align: center; color: var(--main-color); font-size: 3rem; margin: 3rem;">Technical Skills</h2>
 
-    <div class="skils-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-        <div class="skill-card" style="background: var(--second-bg-color); padding: 2rem; border-radius: 20px; border: 1px solid var(--main-color);">
-            <i class='bx bx-shield-quarter' style="font-size: 3rem; color: var(--main-color);"></i>
-            <h3>Cybersecurity</h3>
-            <ul style="list-style: none; margin-top: 1rem;">
-                <li>Network Security</li>
-                <li>Ethical Hacking</li>
-                <li>Vulnerability Assessment</li>
-            </ul>
-        </div>
+        <main>
+            <section class="skills reveal">
+                <h2 class="heading">Technical Skills</h2>
 
-        <div class="skill-card" style="background: var(--second-bg-color); padding: 2rem; border-radius: 20px; border: 1px solid var(--main-color);">
-            <i class='bx bx-code-block' style="font-size: 3rem; color: var(--main-color);"></i>
-            <h3>Web Development</h3>
-            <ul style="list-style: none; margin-top: 1rem;">
-                <li>HTML/CSS/JS</li>
-                <li>Responsive Design</li>
-                <li>Databases Management(SQL)</li>
-            </ul>
-        </div>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        <i class="bx bx-shield-quarter"></i>
+                        <h3>Cybersecurity</h3>
+                        <ul>
+                            <li>Network Security</li>
+                            <li>Ethical Hacking</li>
+                            <li>Vulnerability Assessment</li>
+                            <li>Penetration Testing</li>
+                            <li>Security Auditing</li>
+                        </ul>
+                    </div>
 
-        <div class="skill-card" style="background: var(--second-bg-color); padding: 2rem; border-radius: 20px; border: 1px solid var(--main-color);">
-            <i class='bx bx-data' style="font-size: 3rem; color: var(--main-color);"></i>
-            <h3>Programming</h3>
-            <ul style="list-style: none; margin-top: 1rem;">
-                <li>Python</li>
-                <li>Java</li>
-                <li>C++</li>
-            </ul>
-    </div>
-</section>
+                    <div class="skill-card">
+                        <i class="bx bx-code-block"></i>
+                        <h3>Web Development</h3>
+                        <ul>
+                            <li>HTML5 & CSS3</li>
+                            <li>JavaScript (ES6+) & Jquery</li>
+                            <li>Responsive Design</li>
+                            <li>Database Management (SQL)</li>
+                            <li>RESTful APIs</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-card">
+                        <i class="bx bx-data"></i>
+                        <h3>Programming</h3>
+                        <ul>
+                            <li>Python</li>
+                            <li>Java</li>
+                            <li>C++</li>
+                            <li>JavaScript</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
 
         <footer>
             <p>&copy; 2026 Evans Amos. All rights reserved.</p>
             <div class="social-icons">
-            <a href="https://www.linkedin.com/in/evans-amos-067872370"><i class='bx bxl-linkedin'></i></a>
-            <a href="https://github.com/evansamos254"><i class='bx bxl-github'></i></a>
-            <a href="https://wa.me/254708471884?text=Hi%20Evans%20%I%20need%20%help."><i class='bx bxl-whatsapp'></i></a>
-        </div>
+                <a href="https://www.linkedin.com/in/evans-amos-067872370" target="_blank" rel="noopener norferrer" title="LinedIn"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://github.com/evansamos254" target="_blank" rel="noopener norferrer" title="GitHub"><i class="bx bxl-github"></i></a>
+                <a href="https://wa.me/254708471884?text=Hi%20Evans%20%I%20need%20%help." target="_blank" rel="noopener norferrer" title="WhatsApp"><i class="bx bxl-whatsapp"></i></a>
+            </div>
         </footer>
 
-        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.udm.js"></script>
+
         <script src="js/main.js"></script>
     </body>

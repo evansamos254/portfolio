@@ -3,74 +3,67 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About Me | Portfolio</title>
+        <meta name="description" content="Learn more about Evans Amos - Computer Science specialist with a passion for Cybersecurity and Web Development">
+        <title>About Me | Evans Amos</title>
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="assets/boxicons.min.css">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <style>
-            .about { display: flex; justify-content: center; align-items: center; gap: 4rem; }
-            .profile-img { width: 350px; height: 350px; border-radius: 250px; margin-bottom: 20px; box-shadow: 0 0 2rem var(--main-color);  }
-            .about-content h2 { text-align: left; line-height: 1.2; font-size: 3.5rem;}
-            .about-content h3 {  color: var(--main-color);}
-            .about-content p { font-size: 1.1rem; margin: 2rem 0 3rem; line-height: 1.6; color: #fff;}
-            @media (max-width: 991px) { 
-                .about { flex-direction: column-reverse; }
-                .about-image { width: 60px; height: 60px; margin-top: 4rem; }
-            }
-        </style>
     </head>
     <body>
         <header>
             <div class="logo">Evans Amos</div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="skills.html" class="nav-link">Skills</a></li>
-                    <li><a href="projects.html" class="nav-link">Projects</a></li>
-                </ul>
-            </nav>
             <div class="menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link active">About</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                </ul>
+            </nav>
         </header>
+        <main>
+            <section class="about reveal" id="about">
+                <div class="about-img">
+                    <img src="Images/About Image.jpg" alt="My Profile Picture" id="mypic" class="profie-img" loading="lazy">
+                </div>
 
-        <section class="about reveal" id="about">
-            <div class="about-img">
-                <img src="Images/20250907142348_IMG_0018_024417.jpg" alt="Profile Image" id="mypic" class="profile-img">
-            </div>
-
-            <div class="about-content">
-                <style> 
-                    .heading {color: var(--main-color);}
-                </style>
-                <h2 class="heading">About Me</span></h2>
-                <h3>The Journey of a Tech Enthusiast</h3>
-                <p>I am a dedicated Computer Science specialist with a dual passion for <strong>Cybersecurity</strong> and <strong>Modern Web Development</strong>. 
-                   My journey began with a curiosity about how the internet works, which quickly evolved into a mission to build 
-                   robust, secure, and user-friendly digital environments.
-                     <br><br>
-                     With a strong foundation in network security and ethical hacking fundamentals, I approach web development 
-                     with a "security-first" mindset. My goal is to bridge the gap between aesthetic design and impenetrable 
-                     back-end logic.
-                </p>
-                <a href="skills.html" class="btn">View My Expertise</a>
-            </div>
-        </section>
-
+                <div class="about-content">
+                    <h2 class="heading">About Me</h2>
+                    <h3>The Journey of a Tech Enthusiast</h3>
+                    <p>
+                        I am a dedicated Computer Science specialist with a dual passion for <strong>Cybersecurity</strong> and <strong>Modern Web Development</strong>. 
+                        My journey began with a curiosity about how the internet works, which quickly evolved into a mission to build 
+                        robust, secure, and user-friendly digital environments.
+                    </p>
+                    <p>
+                         With a strong foundation in network security and ethical hacking fundamentals, I approach web development 
+                        with a "security-first" mindset. My goal is to bridge the gap between aesthetic design and impenetrable 
+                        back-end logic, creating applications that are both beautiful and secure.
+                    </p>
+                    <p>
+                        Currently pursuing my Computer Science degree, I'm constantly learning new technologies and staying updated 
+                        with the latest trends in both web development and cybersecurity.
+                    </p>
+                    <a href="skills.html" class="btn">View My Experties</a>
+                </div>
+            </section>
+        </main>
 
         <footer>
-            <p>&copy; 2026 Evans Amos. All rights reserved.</p>
+            <p>&copy; 2026 Evans amos. All rights reserved.</p>
             <div class="social-icons">
-            <a href="https://www.linkedin.com/in/evans-amos-067872370" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-            <a href="https://github.com/evansamos254" title="GitHub"><i class='bx bxl-github'></i></a>
-            <a href="https://wa.me/254708471884?text=Hi%20Evans%20%I%20need%20%help." title="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
-        </div>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/evans-amos-067872370" target="_blank" rel="noopener norferrer" title="LinedIn"><i class="bx bxl-linkedin"></i></a>
+                    <a href="https://github.com/evansamos254" target="_blank" rel="noopener norferrer" title="GitHub"><i class="bx bxl-github"></i></a>
+                    <a href="https://wa.me/254708471884?text=Hi%20Evans%20%I%20need%20%help." target="_blank" rel="noopener norferrer" title="WhatsApp"><i class="bx bxl-whatsapp"></i></a>
+                </div>
+            </div>
         </footer>
 
-        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.udm.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

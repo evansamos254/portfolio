@@ -1,96 +1,250 @@
-// Typing Animation
+// Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
-    if(document.querySelector('.typing-text')) {
+    // Initialize all components
+    initTypingAnimation();
+    initMobileMenu();
+    initProjects();
+    initActiveNavLink();
+    initScrollReveal();
+    initContactForm();
+});
+
+// Typing Animation
+function initTypingAnimation() {
+    const typingElement = document.querySelector('.typing-text');
+    if (typingElement && typeof Typed !== 'undefined') {
         new Typed('.typing-text', {
-            String: ['Cybersecurity Specialist', 'Web Developer', 'CS Student'],
+            strings: ['Cybersecurity Specialist', 'Web Developer', 'CS Student', 'Tech Enthusiast'],
             typeSpeed: 70,
             backSpeed: 70,
             backDelay: 1000,
             loop: true
-        })
+        });
     }
-})
+}
 
-// Contact Form Validation
-const contactForm = document.querySelector('#contact-form');
-if(contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = document.querySelector('#email').value;
-        if(!email.includes('@')) {
-            alert('Please enter a valid email address.');
-            return;
+// Mobile Menu Functionality
+function initMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+    
+    if (!menuToggle || !nav) return;
+
+    // Toggle menu on hamburger click
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuToggle.classList.toggle('active');
+        nav.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when clicking a link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (nav.classList.contains('active') && 
+            !nav.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
         }
-        alert('Message Sent Succssfully!');
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && nav.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     });
 }
 
-
-const projects = [
+// Projects Data and Display
+const projectsData = [
     {
         title: "My Portfolio",
-        description: "personal responsive portfolio built with HTML, CSS and JavaScript",
+        description: "A responsive personal portfolio built with HTML, CSS, and JavaScript featuring modern design and animations.",
         image: "Images/project-1.png",
         live: "https://evansamo.netlify.app",
+        github: "https://github.com/evansamos254/portfolio"
+    },
+    {
+        title: "Task Manager App",
+        description: "A full-stack task management application with user authentication and real-time updates.",
+        image: "Images/project-2.png",
+        live: "https://taskmanager.demo.com",
+        github: "https://github.com/evansamos254/taskmanager"
+    },
+    {
+        title: "Weather Dashboard",
+        description: "Real-time weather application using OpenWeather API with interactive maps and forecasts.",
+        image: "Images/project-3.png",
+        live: "https://weather.demo.com",
+        github: "https://github.com/evansamos254/weather"
     }
 ];
 
+function initProjects() {
+    const container = document.getElementById('projectsContainer');
+    if (!container) return;
 
+    // Clear loading state if any
+    container.innerHTML = '';
 
-const container = document.getElementById("projectsContainer");
+    projectsData.forEach((project, index) => {
+        const card = document.createElement('div');
+        card.classList.add('project-card');
+        card.style.transitionDelay = `${index * 0.1}s`;
 
-projects.forEach(project => {
-  const card = document.createElement("div");
-  card.classList.add("project-card");
+        card.innerHTML = `
+            <img src="${project.image}" alt="${project.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Project+Image'">
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <div class="project-links">
+                <a href="${project.live}" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                <a href="${project.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        `;
 
-  card.innerHTML = `
-    <img src="${project.image}" alt="${project.title}">
-    <h3>${project.title}</h3>
-    <p>${project.description}</p>
-    <div class="project-links">
-      <a href="${project.live}" target="_blank">https://evansamo.netlify.app</a>
-    </div>
-  `;
-
-  container.appendChild(card);
-});
-
-
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, { threshold: 0.2 });
-
-document.querySelectorAll(".project-card").forEach(card => {
-  observer.observe(card);
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-  });
-
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    if (link.getAttribute('href') === currentPage) {
-      link.classList.add('active');
-    }
-  });
-
-  // Optional: Close menu when clicking a link (useful on mobile)
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menuToggle.classList.remove('active');
-      navLinks.classList.remove('active');
+        container.appendChild(card);
     });
-  });
-});
+
+    // Observe project cards for scroll animation
+    observeProjects();
+}
+
+function observeProjects() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '50px'
+    });
+
+    document.querySelectorAll('.project-card').forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// Active Navigation Link
+function initActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href');
+        if (linkPage === currentPage || 
+            (currentPage === '' && linkPage === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Scroll Reveal Animation
+function initScrollReveal() {
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '50px'
+    });
+
+    revealElements.forEach(element => {
+        element.style.opacity = '0';
+        observer.observe(element);
+    });
+}
+
+// Contact Form Validation (if exists)
+function initContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name')?.value;
+        const email = document.getElementById('email')?.value;
+        const message = document.getElementById('message')?.value;
+
+        // Basic validation
+        if (!name || !email || !message) {
+            showNotification('Please fill in all fields', 'error');
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            showNotification('Please enter a valid email address', 'error');
+            return;
+        }
+
+        // Simulate form submission
+        showNotification('Message sent successfully!', 'success');
+        contactForm.reset();
+    });
+}
+
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function showNotification(message, type) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 2rem;
+        background: ${type === 'success' ? '#00ff88' : '#ff4444'};
+        color: #060935;
+        border-radius: 5px;
+        z-index: 9999;
+        animation: slideIn 0.3s ease;
+    `;
+
+    document.body.appendChild(notification);
+
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Add animation styles dynamically
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+`;
+document.head.appendChild(style)
