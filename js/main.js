@@ -88,7 +88,7 @@ const projectsData = [
     {
         title: "Weather Dashboard",
         description: "Real-time weather application using OpenWeather API with interactive maps and forecasts.",
-        image: "Images/project-3.png",
+        image: "Images/Weather dashboard.png",
         live: "https://weather.demo.com",
         github: "https://github.com/evansamos254/weather"
     }
