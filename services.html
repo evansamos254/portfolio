@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Discover the computer science services offered by Evans Amos, from web design to cybersecurity support and system maintenance.">
+        <title>Services | Evans Amos</title>
+        <script>
+            (() => {
+                const preference = localStorage.getItem('theme-preference') || 'system';
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = preference === 'system' ? (prefersDark ? 'dark' : 'light') : preference;
+                document.documentElement.dataset.theme = theme;
+                document.documentElement.dataset.themePreference = preference;
+            })();
+        </script>
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo">Evans Amos</div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="services.html" class="nav-link active">Services</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switcher">
+                <i class="bx bx-palette" aria-hidden="true"></i>
+                <select class="theme-select" aria-label="Select color theme">
+                    <option value="system">System</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <main>
+            <section class="services reveal">
+                <span class="section-kicker">What I Will Do For You</span>
+                <h2 class="heading">My Services</h2>
+                <p class="services-intro">
+                    I provide practical computer science services that help individuals, businesses, and communities
+                    build reliable systems, modern digital experiences, and safer technology environments.
+                </p>
+
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <i class="bx bx-globe" aria-hidden="true"></i>
+                        </div>
+                        <h3>Web Designer</h3>
+                        <p class="service-summary">
+                            I design responsive websites that look professional on phones, tablets, and desktops while
+                            keeping the experience clear, fast, and user friendly.
+                        </p>
+                        <button type="button" class="service-link service-toggle" aria-expanded="false">Read More</button>
+                        <div class="service-details">
+                            <p>
+                                This service includes layout planning, color and typography selection, responsive page
+                                structure, landing pages, portfolio sites, and business websites designed to support a
+                                strong online presence.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <i class="bx bx-code-block" aria-hidden="true"></i>
+                        </div>
+                        <h3>Website Design and Development</h3>
+                        <p class="service-summary">
+                            I design and build complete websites that combine attractive layouts with functional,
+                            responsive, and user-focused front-end and back-end solutions.
+                        </p>
+                        <button type="button" class="service-link service-toggle" aria-expanded="false">Read More</button>
+                        <div class="service-details">
+                            <p>
+                                This service covers planning, interface design, coding, responsive implementation,
+                                content structure, performance improvements, and creating websites that are ready for
+                                personal brands, businesses, and organizations.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <i class="bx bx-wrench" aria-hidden="true"></i>
+                        </div>
+                        <h3>System Maintenance</h3>
+                        <p class="service-summary">
+                            I help keep computer systems healthy through troubleshooting, performance checks, software
+                            updates, cleanup, and routine maintenance for smooth day-to-day operation.
+                        </p>
+                        <button type="button" class="service-link service-toggle" aria-expanded="false">Read More</button>
+                        <div class="service-details">
+                            <p>
+                                I can assist with virus cleanup, operating system optimization, driver installation,
+                                hardware checks, backup routines, and performance improvements for personal and office
+                                computers.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <i class="bx bx-palette" aria-hidden="true"></i>
+                        </div>
+                        <h3>Graphics Design</h3>
+                        <p class="service-summary">
+                            I create clear and attractive visual materials that help brands, events, and businesses
+                            communicate ideas in a professional and memorable way.
+                        </p>
+                        <button type="button" class="service-link service-toggle" aria-expanded="false">Read More</button>
+                        <div class="service-details">
+                            <p>
+                                This can include posters, social media flyers, simple brand visuals, presentation
+                                graphics, marketing banners, and promotional designs tailored to your audience and
+                                message.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <i class="bx bx-lock-alt" aria-hidden="true"></i>
+                        </div>
+                        <h3>Cybersecurity Support</h3>
+                        <p class="service-summary">
+                            I help users and organizations strengthen their digital safety through basic security audits,
+                            secure setup guidance, and awareness of common online threats.
+                        </p>
+                        <button type="button" class="service-link service-toggle" aria-expanded="false">Read More</button>
+                        <div class="service-details">
+                            <p>
+                                Support includes password hygiene guidance, safer device configuration, phishing
+                                awareness, account protection recommendations, and practical steps to reduce common
+                                digital risks.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <i class="bx bx-code-alt" aria-hidden="true"></i>
+                        </div>
+                        <h3>Software Solutions</h3>
+                        <p class="service-summary">
+                            I build simple software and web-based solutions that solve real problems, automate tasks,
+                            and improve workflows for students, startups, and small businesses.
+                        </p>
+                        <button type="button" class="service-link service-toggle" aria-expanded="false">Read More</button>
+                        <div class="service-details">
+                            <p>
+                                Depending on the need, I can help with dashboards, data entry tools, school projects,
+                                simple management systems, and custom features that reduce manual work and save time.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <i class="bx bx-data" aria-hidden="true"></i>
+                        </div>
+                        <h3>Database Management</h3>
+                        <p class="service-summary">
+                            I assist with organizing, storing, and managing data efficiently so records remain accurate,
+                            accessible, and secure for academic, business, or project needs.
+                        </p>
+                        <button type="button" class="service-link service-toggle" aria-expanded="false">Read More</button>
+                        <div class="service-details">
+                            <p>
+                                This includes database structure planning, query support, record organization, simple
+                                reporting, and helping maintain consistent and usable data for decision-making.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <i class="bx bx-book-open" aria-hidden="true"></i>
+                        </div>
+                        <h3>Digital Training</h3>
+                        <p class="service-summary">
+                            I support learners and community members with practical guidance in computer basics, safe
+                            internet use, productivity tools, and foundational programming skills.
+                        </p>
+                        <button type="button" class="service-link service-toggle" aria-expanded="false">Read More</button>
+                        <div class="service-details">
+                            <p>
+                                Training can be structured for beginners, students, or teams and may cover digital
+                                literacy, online research, office tools, basic coding concepts, and safe use of modern
+                                technology.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Evans Amos. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/evans-amos-067872370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://github.com/evansamos254" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="bx bxl-github"></i></a>
+                <a href="https://wa.me/254708471884?text=Hi%20Evans%20I%20need%20help." target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="bx bxl-whatsapp"></i></a>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>

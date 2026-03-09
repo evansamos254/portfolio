@@ -1,13 +1,66 @@
+const THEME_STORAGE_KEY = 'theme-preference';
+
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
+    initThemeMode();
     initTypingAnimation();
     initMobileMenu();
+    initServiceDetails();
     initProjects();
     initActiveNavLink();
     initScrollReveal();
     initContactForm();
 });
+
+function initThemeMode() {
+    const themeSelects = document.querySelectorAll('.theme-select');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const savedPreference = localStorage.getItem(THEME_STORAGE_KEY) || 'system';
+
+    applyTheme(savedPreference);
+
+    themeSelects.forEach(select => {
+        select.value = savedPreference;
+        select.addEventListener('change', (event) => {
+            applyTheme(event.target.value);
+        });
+    });
+
+    const syncSystemTheme = () => {
+        const activePreference = localStorage.getItem(THEME_STORAGE_KEY) || 'system';
+        if (activePreference === 'system') {
+            applyTheme('system');
+        }
+    };
+
+    if (typeof systemTheme.addEventListener === 'function') {
+        systemTheme.addEventListener('change', syncSystemTheme);
+    } else if (typeof systemTheme.addListener === 'function') {
+        systemTheme.addListener(syncSystemTheme);
+    }
+}
+
+function applyTheme(preference) {
+    const resolvedTheme = preference === 'system'
+        ? getSystemTheme()
+        : preference;
+
+    localStorage.setItem(THEME_STORAGE_KEY, preference);
+    document.documentElement.dataset.theme = resolvedTheme;
+    document.documentElement.dataset.themePreference = preference;
+    document.documentElement.style.colorScheme = resolvedTheme;
+
+    document.querySelectorAll('.theme-select').forEach(select => {
+        select.value = preference;
+    });
+}
+
+function getSystemTheme() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+}
 
 // Typing Animation
 function initTypingAnimation() {
@@ -123,6 +176,22 @@ function initProjects() {
     observeProjects();
 }
 
+function initServiceDetails() {
+    const toggleButtons = document.querySelectorAll('.service-toggle');
+    if (!toggleButtons.length) return;
+
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const card = button.closest('.service-card');
+            if (!card) return;
+
+            const isExpanded = card.classList.toggle('expanded');
+            button.setAttribute('aria-expanded', String(isExpanded));
+            button.textContent = isExpanded ? 'Read Less' : 'Read More';
+        });
+    });
+}
+
 function observeProjects() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -219,7 +288,7 @@ function showNotification(message, type) {
         right: 20px;
         padding: 1rem 2rem;
         background: ${type === 'success' ? '#00ff88' : '#ff4444'};
-        color: #060935;
+        color: var(--bg-color);
         border-radius: 5px;
         z-index: 9999;
         animation: slideIn 0.3s ease;

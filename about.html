@@ -5,35 +5,56 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Learn more about Evans Amos - Computer Science specialist with a passion for Cybersecurity and Web Development">
         <title>About Me | Evans Amos</title>
+        <script>
+            (() => {
+                const preference = localStorage.getItem('theme-preference') || 'system';
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = preference === 'system' ? (prefersDark ? 'dark' : 'light') : preference;
+                document.documentElement.dataset.theme = theme;
+                document.documentElement.dataset.themePreference = preference;
+            })();
+        </script>
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <header>
             <div class="logo">Evans Amos</div>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
             <nav class="nav">
                 <ul>
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="about.html" class="nav-link active">About</a></li>
                     <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
                     <li><a href="projects.html" class="nav-link">Projects</a></li>
                 </ul>
             </nav>
+            <div class="theme-switcher">
+                <i class="bx bx-palette" aria-hidden="true"></i>
+                <select class="theme-select" aria-label="Select color theme">
+                    <option value="system">System</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </header>
         <main>
             <section class="about reveal" id="about">
+                <div class="about-heading-group">
+                    <h2 class="heading">About Me</h2>
+                    <h3>The Journey of a Tech Enthusiast</h3>
+                </div>
+
                 <div class="about-img">
                     <img src="Images/About Image.jpg" alt="My Profile Picture" id="mypic" class="profile-img" loading="lazy">
                 </div>
 
                 <div class="about-content">
-                    <h2 class="heading">About Me</h2>
-                    <h3>The Journey of a Tech Enthusiast</h3>
                     <p>
                         I am a dedicated Computer Science specialist with a dual passion for <strong>Cybersecurity</strong> and <strong>Modern Web Development</strong>. 
                         My journey began with a curiosity about how the internet works, which quickly evolved into a mission to build 

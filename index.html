@@ -7,25 +7,43 @@
         <meta name="keybords" content="Web Developer, Cybersecurity, Portfolio, Evans Amos">
         <meta name="author" content="Evans Amos">
         <title>Evans Amos | Home</title>
+        <script>
+            (() => {
+                const preference = localStorage.getItem('theme-preference') || 'system';
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = preference === 'system' ? (prefersDark ? 'dark' : 'light') : preference;
+                document.documentElement.dataset.theme = theme;
+                document.documentElement.dataset.themePreference = preference;
+            })();
+        </script>
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <header>
             <div class="logo">Evans Amos</div>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
             <nav class="nav">
                 <ul>
                     <li><a href="index.html" class="nav-link active">Home</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
                     <li><a href="projects.html" class="nav-link">Projects</a></li>
                 </ul>
             </nav>
+            <div class="theme-switcher">
+                <i class="bx bx-palette" aria-hidden="true"></i>
+                <select class="theme-select" aria-label="Select color theme">
+                    <option value="system">System</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </header>
 
         <section class="home reveal">
@@ -44,6 +62,10 @@
                     <a href="about.html" class="btn">About Me</a>
                     <a href="projects.html" class="btn btn-outline">View Projects</a>
                 </div>
+            </div>
+
+            <div class="home-img">
+                <img src="Images/About Image.jpg" alt="Evans Amos profile picture" class="profile-img" loading="eager">
             </div>
         </section>
 
