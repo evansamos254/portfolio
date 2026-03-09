@@ -130,20 +130,6 @@ const projectsData = [
         image: "Images/project-1.png",
         live: "https://evansamo.netlify.app",
         github: "https://github.com/evansamos254/portfolio"
-    },
-    {
-        title: "Task Manager App",
-        description: "A full-stack task management application with user authentication and real-time updates.",
-        image: "Images/project-2.png",
-        live: "https://taskmanager.demo.com",
-        github: "https://github.com/evansamos254/taskmanager"
-    },
-    {
-        title: "Weather Dashboard",
-        description: "On going projrct for Real-time weather application using OpenWeather API with interactive maps and forecasts.",
-        image: "Images/Weather dashboard.png",
-        live: "https://weather.demo.com",
-        github: "https://github.com/evansamos254/weather"
     }
 ];
 
