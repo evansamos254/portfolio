@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Send a request or enquiry to Evans Amos.">
+        <title>Enquiry | Evans Amos</title>
+        <script>
+            (() => {
+                const preference = localStorage.getItem('theme-preference') || 'system';
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = preference === 'system' ? (prefersDark ? 'dark' : 'light') : preference;
+                document.documentElement.dataset.theme = theme;
+                document.documentElement.dataset.themePreference = preference;
+            })();
+        </script>
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo">Evans Amos</div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="enquiry.html" class="nav-link active">Enquiry</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switcher">
+                <i class="bx bx-palette" aria-hidden="true"></i>
+                <select class="theme-select" aria-label="Select color theme">
+                    <option value="system">System</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <main>
+            <section class="enquiry reveal">
+                <span class="section-kicker">Get In Touch</span>
+                <h2 class="heading">Enquiry Form</h2>
+                <p class="enquiry-intro">
+                    Share your request and I will get back to you. This form goes directly to the admin dashboard inbox.
+                </p>
+
+                <form class="enquiry-form" id="enquiry-form">
+                    <div class="enquiry-grid">
+                        <label for="enquiry-name">
+                            <span>Your Name</span>
+                            <input type="text" id="enquiry-name" name="name" placeholder="Enter your name" required>
+                        </label>
+                        <label for="enquiry-email">
+                            <span>Email Address</span>
+                            <input type="email" id="enquiry-email" name="email" placeholder="you@example.com" required>
+                        </label>
+                        <label for="enquiry-subject">
+                            <span>Subject (optional)</span>
+                            <input type="text" id="enquiry-subject" name="subject" placeholder="Service enquiry">
+                        </label>
+                    </div>
+                    <label for="enquiry-message">
+                        <span>Your Request</span>
+                        <textarea id="enquiry-message" name="message" rows="5" placeholder="Tell me what you need..." required></textarea>
+                    </label>
+                    <button type="submit" class="btn">Send Enquiry</button>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Evans Amos. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/evans-amos-067872370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://github.com/evansamos254" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="bx bxl-github"></i></a>
+                <a href="https://wa.me/254708471884?text=Hi%20Evans%20I%20need%20help." target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="bx bxl-whatsapp"></i></a>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Private admin dashboard for Evans Amos portfolio">
+        <title>Admin Dashboard | Evans Amos</title>
+        <script>
+            (() => {
+                const preference = localStorage.getItem('theme-preference') || 'system';
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = preference === 'system' ? (prefersDark ? 'dark' : 'light') : preference;
+                document.documentElement.dataset.theme = theme;
+                document.documentElement.dataset.themePreference = preference;
+            })();
+        </script>
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="admin-dashboard-page">
+        <header>
+            <div class="logo" data-portfolio-key="name">Evans Amos</div>
+            <nav class="nav admin-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">View Portfolio</a></li>
+                    <li><button type="button" class="nav-link admin-logout-link" data-admin-logout>Logout</button></li>
+                </ul>
+            </nav>
+            <div class="theme-switcher">
+                <i class="bx bx-palette" aria-hidden="true"></i>
+                <select class="theme-select" aria-label="Select color theme">
+                    <option value="system">System</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <main class="admin-dashboard-main" data-admin-dashboard>
+            <section class="admin-dashboard reveal">
+                <div class="admin-dashboard-shell">
+                    <div class="admin-dashboard-hero">
+                        <span class="section-kicker">Private Area</span>
+                        <h1>Admin Dashboard</h1>
+                        <p>This space is for admin use only. The portfolio remains public for visitors, but this page always requires a fresh login after you leave it.</p>
+                    </div>
+
+                    <div class="admin-dashboard-grid">
+                        <article class="admin-dashboard-card">
+                            <i class="bx bx-shield-quarter"></i>
+                            <h2>Protected Session</h2>
+                            <p>Your admin session is temporary and is cleared as soon as you leave, reload, or close this admin page.</p>
+                        </article>
+
+                        <article class="admin-dashboard-card">
+                            <i class="bx bx-globe"></i>
+                            <h2>Public Portfolio</h2>
+                            <p>Anyone can still open the portfolio pages without any login prompt. Only this dashboard is restricted.</p>
+                        </article>
+
+                        <article class="admin-dashboard-card">
+                            <i class="bx bx-exit"></i>
+                            <h2>Leave Admin Area</h2>
+                            <p>Use the logout button or return to the portfolio. Either way, the next admin visit will start from the login page again.</p>
+                        </article>
+                    </div>
+
+                    <div class="admin-panel">
+                        <h2>Portfolio Editor</h2>
+                        <p>Update the homepage and About text without touching code.</p>
+                        <form class="admin-form" id="admin-portfolio-form">
+                            <div class="admin-form-grid">
+                                <label>
+                                    <span>Display Name</span>
+                                    <input type="text" id="admin-portfolio-name" placeholder="Evans Amos">
+                                </label>
+                                <label>
+                                    <span>Hero Role Line</span>
+                                    <input type="text" id="admin-portfolio-role" placeholder="Cybersecurity Specialist">
+                                </label>
+                            </div>
+                            <label>
+                                <span>Hero Intro</span>
+                                <textarea id="admin-portfolio-intro" rows="3" placeholder="Short intro paragraph on the home page."></textarea>
+                            </label>
+                            <label>
+                                <span>About Paragraph 1</span>
+                                <textarea id="admin-portfolio-about-1" rows="3"></textarea>
+                            </label>
+                            <label>
+                                <span>About Paragraph 2</span>
+                                <textarea id="admin-portfolio-about-2" rows="3"></textarea>
+                            </label>
+                            <label>
+                                <span>About Paragraph 3</span>
+                                <textarea id="admin-portfolio-about-3" rows="3"></textarea>
+                            </label>
+                            <div class="admin-form-actions">
+                                <button type="submit" class="btn">Save Portfolio</button>
+                                <button type="button" class="btn btn-outline" data-admin-portfolio-reset>Reset Form</button>
+                                <button type="button" class="btn btn-outline" data-admin-portfolio-clear>Delete Saved Edits</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="admin-panel">
+                        <h2>Project Manager</h2>
+                        <p>Add, edit, or delete portfolio projects. Saved projects show on the Projects page.</p>
+                        <form class="admin-form" id="admin-project-form">
+                            <input type="hidden" data-admin-project-id>
+                            <input type="hidden" id="admin-project-image-data">
+                            <div class="admin-form-grid">
+                                <label>
+                                    <span>Project Title</span>
+                                    <input type="text" id="admin-project-title" required>
+                                </label>
+                                <label>
+                                    <span>Image URL</span>
+                                    <input type="text" id="admin-project-image" placeholder="Images/project-2.png">
+                                </label>
+                            </div>
+                            <label>
+                                <span>Or Upload Image</span>
+                                <input type="file" id="admin-project-image-file" accept="image/*">
+                                <small class="admin-help">Choose an image from any folder on your device. The upload is saved in this browser only.</small>
+                            </label>
+                            <label>
+                                <span>Description</span>
+                                <textarea id="admin-project-description" rows="3" required></textarea>
+                            </label>
+                            <div class="admin-form-grid">
+                                <label>
+                                    <span>Live Link</span>
+                                    <input type="text" id="admin-project-live">
+                                </label>
+                                <label>
+                                    <span>GitHub Link</span>
+                                    <input type="text" id="admin-project-github">
+                                </label>
+                            </div>
+                            <div class="admin-form-actions">
+                                <button type="submit" class="btn">Save Project</button>
+                                <button type="button" class="btn btn-outline" data-admin-project-reset>Reset Form</button>
+                            </div>
+                        </form>
+                        <div class="admin-list" id="admin-project-list"></div>
+                    </div>
+
+                    <div class="admin-panel">
+                        <h2>Article Manager</h2>
+                        <p>Add blog-style articles. Saved articles show on the Articles page.</p>
+                        <form class="admin-form" id="admin-article-form">
+                            <input type="hidden" data-admin-article-id>
+                            <div class="admin-form-grid">
+                                <label>
+                                    <span>Article Title</span>
+                                    <input type="text" id="admin-article-title" required>
+                                </label>
+                                <label>
+                                    <span>Publish Date</span>
+                                    <input type="text" id="admin-article-date" placeholder="March 9, 2026">
+                                </label>
+                            </div>
+                            <label>
+                                <span>Excerpt</span>
+                                <textarea id="admin-article-excerpt" rows="3" required></textarea>
+                            </label>
+                            <label>
+                                <span>Read Link (optional)</span>
+                                <input type="text" id="admin-article-link" placeholder="https://example.com/article">
+                            </label>
+                            <div class="admin-form-actions">
+                                <button type="submit" class="btn">Save Article</button>
+                                <button type="button" class="btn btn-outline" data-admin-article-reset>Reset Form</button>
+                            </div>
+                        </form>
+                        <div class="admin-list" id="admin-article-list"></div>
+                    </div>
+
+                    <div class="admin-panel">
+                        <h2>Enquiry Inbox</h2>
+                        <p>View requests submitted from the public enquiry form.</p>
+                        <div class="admin-form-actions">
+                            <button type="button" class="btn btn-outline" data-admin-enquiry-clear>Clear All Enquiries</button>
+                        </div>
+                        <div class="admin-list" id="admin-enquiry-list"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Evans Amos. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/evans-amos-067872370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://github.com/evansamos254" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="bx bxl-github"></i></a>
+                <a href="https://wa.me/254708471884?text=Hi%20Evans%20I%20need%20help." target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="bx bxl-whatsapp"></i></a>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>

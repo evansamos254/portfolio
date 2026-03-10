@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Admin login page for Evans Amos portfolio site">
+        <title>Admin Login | Evans Amos</title>
+        <script>
+            (() => {
+                const preference = localStorage.getItem('theme-preference') || 'system';
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = preference === 'system' ? (prefersDark ? 'dark' : 'light') : preference;
+                document.documentElement.dataset.theme = theme;
+                document.documentElement.dataset.themePreference = preference;
+            })();
+        </script>
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="admin-login-page">
+        <header>
+            <div class="logo" data-portfolio-key="name">Evans Amos</div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switcher">
+                <i class="bx bx-palette" aria-hidden="true"></i>
+                <select class="theme-select" aria-label="Select color theme">
+                    <option value="system">System</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <main class="admin-login-main">
+            <section class="admin-login reveal">
+                <div class="admin-login-shell">
+                    <div class="admin-login-intro">
+                        <span class="section-kicker">Restricted Access</span>
+                        <h1>Admin Login</h1>
+                        <p>This page is reserved for administrative access only. Visitors can still view the portfolio normally without logging in.</p>
+                        <div class="admin-login-note">
+                            <i class="bx bx-lock-alt" aria-hidden="true"></i>
+                            <span>Only the admin dashboard requires credentials.</span>
+                        </div>
+                    </div>
+
+                    <form class="admin-login-form" id="admin-login-form">
+                        <label class="admin-field" for="admin-username">
+                            <span>Admin Username</span>
+                            <input type="text" id="admin-username" name="username" placeholder="Enter admin username" autocomplete="username" required>
+                        </label>
+
+                        <label class="admin-field" for="admin-password">
+                            <span>Password</span>
+                            <input type="password" id="admin-password" name="password" placeholder="Enter password" autocomplete="current-password" required>
+                        </label>
+
+                        <button type="submit" class="btn admin-submit">Login as Admin</button>
+                        <p class="admin-login-status" id="admin-login-status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Evans Amos. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/evans-amos-067872370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://github.com/evansamos254" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="bx bxl-github"></i></a>
+                <a href="https://wa.me/254708471884?text=Hi%20Evans%20I%20need%20help." target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="bx bxl-whatsapp"></i></a>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
