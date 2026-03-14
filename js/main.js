@@ -767,8 +767,10 @@ function initEnquiryForm() {
     const subjectInput = document.getElementById('enquiry-subject');
     const messageInput = document.getElementById('enquiry-message');
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
+        if (form.dataset.submitting === 'true') return;
+        form.dataset.submitting = 'true';
 
         const entry = {
             id: `enquiry-${Date.now()}`,
@@ -781,6 +783,7 @@ function initEnquiryForm() {
 
         if (!entry.name || !entry.email || !entry.message) {
             showNotification('Please fill in your name, email, and message.', 'error');
+            form.dataset.submitting = 'false';
             return;
         }
 
@@ -788,8 +791,26 @@ function initEnquiryForm() {
         enquiries.unshift(entry);
         saveStoredList(ADMIN_ENQUIRIES_KEY, enquiries);
 
-        showNotification('Thanks! Your enquiry has been sent.', 'success');
-        form.reset();
+        try {
+            const formData = new FormData(form);
+            const payload = new URLSearchParams(formData).toString();
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: payload
+            });
+
+            if (!response.ok) {
+                throw new Error('Netlify form submission failed.');
+            }
+
+            showNotification('Thanks! Your enquiry has been sent and emailed.', 'success');
+            form.reset();
+        } catch (error) {
+            showNotification('Saved to inbox, but email delivery failed. Please try again.', 'error');
+        } finally {
+            form.dataset.submitting = 'false';
+        }
     });
 }
 
